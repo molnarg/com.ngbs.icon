@@ -59,12 +59,8 @@ export default class ThermostatDriver extends Homey.Driver {
       } else {
         try {
           const result = await scan((percentage) => {
-            try {
-              session.emit('scan', percentage);
-            } catch(e) {
-              // This can happen e.g. when the pairing session ends before the scan does
-              this.log('Error while reporting scan progress', e);
-            }
+            // This can happen e.g. when the pairing session ends before the scan does
+            session.emit('scan', percentage).catch((e: any) => this.log('Error while reporting scan progress', e));
           }, this.log.bind(this));
           if (result) {
             address = result.address;
