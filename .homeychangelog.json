@@ -25,5 +25,8 @@
   },
   "2.3.2": {
     "en": "Minor fixes"
+  },
+  "2.3.3": {
+    "en": "Fix a JSON protocol issue"
   }
 }
